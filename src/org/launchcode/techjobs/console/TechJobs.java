@@ -11,7 +11,7 @@ public class TechJobs {
 
     private static Scanner in = new Scanner(System.in);
 
-    public static void main (String[] args) {
+    public static void main (String[] args) {   //main application runner
 
         // Initialize our field map with key/name pairs
         HashMap<String, String> columnChoices = new HashMap<>();
@@ -57,12 +57,15 @@ public class TechJobs {
                 String searchField = getUserSelection("Search by:", columnChoices);
 
                 // What is their search term?
+               // System.out.println("\nSearch term: ");
                 System.out.println("\nSearch term: ");
                 String searchTerm = in.nextLine();
 
+                //System.out.println("Search all fields not yet implemented.");
                 if (searchField.equals("all")) {
-                    System.out.println("Search all fields not yet implemented.");
-                } else {
+                    printJobs(JobData.findByValue(searchTerm));
+                }
+                else {
                     printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
                 }
             }
@@ -70,7 +73,7 @@ public class TechJobs {
     }
 
     // ﻿Returns the key of the selected item from the choices Dictionary
-    private static String getUserSelection(String menuHeader, HashMap<String, String> choices) {
+    private static String getUserSelection(String menuHeader, HashMap<String, String> choices) {   //displays choices to select
 
         Integer choiceIdx;
         Boolean validChoice = false;
@@ -111,6 +114,17 @@ public class TechJobs {
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 
-        System.out.println("printJobs is not implemented yet");
+       /// System.out.println("printJobs is not implemented yet");
+        System.out.println("*****");
+        for ( HashMap<String, String> anotherJob : someJobs ) {
+            for (String i : anotherJob.keySet()) {   //to return all keys in the map
+                System.out.println(i  + ": " + anotherJob.get(i));
+            }
+            System.out.println("*****");
+        }
+        if (someJobs.isEmpty()) {
+            System.out.println("No jobs found!");
+
+        }
     }
 }
