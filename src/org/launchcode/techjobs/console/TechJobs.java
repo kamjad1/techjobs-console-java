@@ -117,8 +117,8 @@ public class TechJobs {
        /// System.out.println("printJobs is not implemented yet");
         System.out.println("*****");
         for ( HashMap<String, String> anotherJob : someJobs ) {
-            for (String i : anotherJob.keySet()) {   //to return all keys in the map
-                System.out.println(i  + ": " + anotherJob.get(i));
+            for (String entry : anotherJob.keySet()) {   //to return all keys in the map
+                System.out.println(entry  + ": " + anotherJob.get(entry));
             }
             System.out.println("*****");
         }
